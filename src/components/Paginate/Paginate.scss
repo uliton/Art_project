@@ -1,0 +1,80 @@
+@import '../../styles/_utils/mixins';
+
+$border-color: #C8AF6A;
+
+.pagination {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+
+    padding-left: 15px;
+    padding-right: 15px;
+
+    list-style: none;
+    font-size: 14px;
+
+    @include on1024 {
+        flex-direction: row;
+    }
+
+    &__page-buttons-container {
+        display: flex;
+        flex-direction: row;
+
+        margin-bottom: 20px;
+
+        @include on1024 {
+            margin-bottom: 0px;
+            margin-right: 20px;
+        }
+
+        & button:first-child{
+            border-left: 1px solid $border-color;
+        }
+    }
+
+    &__prev-next-container {
+        display: flex;
+        flex-direction: row;
+
+        & button:first-child {
+            border-left: 1px solid $border-color;
+        }
+    }
+
+    &__page-button {
+        border: none;
+        background-color: transparent;
+
+        display: flex;
+        justify-content: center;
+        align-items: center;
+
+        width: 40px;
+        height: 40px;
+
+        @include on1024 {
+            width: 45px;
+            height: 45px;
+        }
+
+        border-right: 1px solid $border-color;
+        border-top: 1px solid $border-color;
+        border-bottom: 1px solid $border-color;
+
+        &.active {
+            background-color: $border-color;
+        }
+
+        & > img {
+            width: 50%;
+            height: 50%;
+        }
+    }
+
+    &__next-button {
+        & > img {
+            transform: scaleX(-1);
+        }
+    }
+}

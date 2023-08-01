@@ -1,0 +1,61 @@
+@import '../../styles/_utils/variables';
+
+.filters {
+  position: fixed;
+  top: 50px;
+  left: 10px;
+  right: 10%;
+  bottom: 5%;
+  max-width: 300px;
+  color: #fff;
+  background-color: #000;
+  border-radius: 4px;
+  user-select: none;
+  transform: translateX(-120%);
+  transition: transform .2s;
+
+  &--isOpen {
+    transform: translateX(0%);
+    z-index: 5;
+  }
+
+  &__exit {
+    position: absolute;
+    top: 5px;
+    right: 15px;
+    width: 40px;
+    height: 40px;
+    margin-left: auto;
+    
+    &:hover {
+      &::before, &::after {
+        background-color: $color-hover;
+      }
+    }
+    &::before, &::after {
+      content: '';
+      position: absolute;
+      width: 20px;
+      height: 2px;
+      background-color: #fff;
+      top: 50%;
+      left: 50%;
+      transition: all .2s linear;
+    }
+    &::before {
+      transform: translate(-50%, -50%) rotate(-45deg);
+    }
+    &::after {
+      transform: translate(-50%, -50%) rotate(45deg);
+    }
+    &:hover {
+      cursor: pointer;
+    }
+  }
+
+  &__wrapper {
+    height: 100%;
+    overflow: hidden;
+    overflow-y: scroll;
+  }
+}

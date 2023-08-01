@@ -1,0 +1,25 @@
+@import './_utils/reset';
+@import './_utils/normolize';
+@import './_utils/variables';
+@import './_utils/mixins';
+@import './_utils/container';
+@import './fonts/fonts';
+
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+body {
+    font-family: 'Acumin Pro', sans-serif;
+    line-height: 1em;
+}
+
+a {
+    all: unset;
+
+    &:hover {
+        cursor: pointer;
+    }
+}

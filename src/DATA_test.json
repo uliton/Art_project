@@ -1,0 +1,62 @@
+[
+  {
+      "id": 1,
+      "image": "https://onlinegallery.art/images/artworks/enjoying-summergreen-opus-32.jpg",
+      "title": "Enjoying Summergreen opus 32",
+      "artist": "Geert Lemmers",
+      "medium": "Painting",
+      "price": 490,
+      "size": "Small",
+      "year": 2016,
+      "colors": "Multi",
+      "orientation": "Vertical"
+  },
+  {
+      "id": 2,
+      "image": "https://onlinegallery.art/images/artworks/liberation-of-the-mind-opus-20.jpg",
+      "title": "Liberation of the mind opus 20",
+      "artist": "Geert Lemmers",
+      "medium": "Painting",
+      "price": 590,
+      "size": "Medium",
+      "year": 2022,
+      "colors": "Multi",
+      "orientation": "Square"
+  },
+  {
+      "id": 3,
+      "image": "https://onlinegallery.art/images/artworks/seventies1.jpg",
+      "title": "The seventies Dublin II",
+      "artist": "Geert Lemmers",
+      "medium": "Photography",
+      "price": 490,
+      "size": "Medium",
+      "year": 1974,
+      "colors": "Black & White",
+      "orientation": "Horizontal"
+  },
+  {
+      "id": 4,
+      "image": "https://onlinegallery.art/images/artworks/dinand77-ii.jpg",
+      "title": "Dinand 77_II",
+      "artist": "Geert Lemmers",
+      "medium": "Photography",
+      "price": 490,
+      "size": "Medium",
+      "year": 2020,
+      "colors": "Pink, Blue",
+      "orientation": "Vertical"
+  },
+  {
+      "id": 5,
+      "image": "https://onlinegallery.art/images/artworks/dinand-iii.jpg",
+      "title": "Dinand III",
+      "artist": "Geert Lemmers",
+      "medium": "Photography",
+      "price": 490,
+      "size": "Medium",
+      "year": 2020,
+      "colors": "Beige, Multi",
+      "orientation": "Vertical"
+  }
+]

@@ -1,0 +1,46 @@
+@import '../../styles/_utils/variables';
+@import '../../styles/_utils/mixins';
+
+.artwork {
+  margin-bottom: 20px;
+
+  &__img {
+    display: block;
+    cursor: pointer;
+    background-color: rgb(240, 240, 240);
+    margin-bottom: 4px;
+    
+    & > img {
+      width: 100%;
+    }
+  }
+
+  &__artist {
+    display: flex;
+    align-items: center;
+    gap: 12px;
+    cursor: pointer;
+    width: max-content;
+
+    &__img {
+      width: 20px;
+      height: 20px;
+      border: 1px solid #000;
+      border-radius: 50%;
+      
+      @include on768 {
+        width: 32px;
+        height: 32px;
+      }
+    }
+    
+    &__text {
+      display: block;
+      font-size: 14px;
+      font-weight: bold;
+      white-space: nowrap;
+      overflow: hidden;
+      text-overflow: ellipsis;
+    }
+  }
+}

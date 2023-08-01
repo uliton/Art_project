@@ -1,0 +1,17 @@
+@mixin on768 {
+  @media (min-width: 768px) {
+    @content;
+  }
+}
+
+@mixin on1024 {
+  @media (min-width: 1024px) {
+    @content;
+  }
+}
+
+@mixin on1280 {
+  @media (min-width: 1280px) {
+    @content;
+  }
+}

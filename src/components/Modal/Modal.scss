@@ -1,0 +1,218 @@
+@import '../../styles/_utils/variables';
+
+.modal {
+  position: absolute;
+  top: 0;
+  right: 0;
+  bottom: 0;
+  left: 0;
+  background-color: rgba(0, 0, 0, .6);
+
+  display: flex;
+  justify-content: center;
+  align-items: center;
+
+  user-select: none;
+
+  &__container {
+    width: calc(100vw - 20px);
+    max-width: 440px;
+
+    // height: calc(100vh - 20px);
+    max-height: max-content;
+
+    background-color: #fff;
+
+    border-radius: 8px;
+
+    position: relative;
+    z-index: 111;
+  }
+
+  &__exit {
+    position: absolute;
+    right: 10px;
+    width: 40px;
+    height: 40px;
+    margin-left: auto;
+
+    &:hover {
+      &::before, &::after {
+        background-color: $color-hover;
+      }
+    }
+    &::before, &::after {
+      content: '';
+      position: absolute;
+      width: 30px;
+      height: 3px;
+      background-color: #000;
+      top: 50%;
+      left: 50%;
+      transition: all .2s linear;
+    }
+    &::before {
+      transform: translate(-50%, -50%) rotate(-45deg);
+    }
+    &::after {
+      transform: translate(-50%, -50%) rotate(45deg);
+    }
+    &:hover {
+      cursor: pointer;
+    }
+  }
+
+  &__header {
+    position: relative;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    height: 70px;
+    border-bottom: 2px solid $color-border;
+    padding: 10px;
+
+    &__img {
+      height: 100%;
+    }
+  }
+
+  &__body {
+    display: flex;
+    flex-direction: column;
+    row-gap: 10px;
+    padding: 30px;
+    line-height: 1.38;
+
+    &__title {
+      font-size: 25px;
+      text-align: center;
+      font-weight: bold;
+
+      &--login {
+        font-size: 30px;
+      }
+    }
+
+    &__subtitle {
+      text-align: center;
+      font-size: 16px;
+      margin-bottom: 20px;
+      color: $color-text-secondary;
+    }
+
+    &__register {
+      display: flex;
+      flex-direction: column;
+      font-size: 11px;
+      font-weight: bold;
+      gap: 4px;
+
+      &__wrapper {
+        display: flex;
+        align-items: center;
+        flex-wrap: wrap;
+        column-gap: 16px;
+        font-size: 16px;
+        color: $color-text-secondary;
+
+        & > label {
+          margin-bottom: 4px;
+          font-weight: normal;
+        }
+      }
+    }
+
+    &__inputs {
+      display: flex;
+      flex-direction: column;
+      gap: 20px;
+      margin-bottom: 10px;
+
+      & > label {
+        display: flex;
+        flex-direction: column;
+        font-size: 11px;
+        font-weight: bold;
+        gap: 4px;
+
+        & > input {
+          width: 100%;
+          height: 50px;
+          padding: 0 20px;
+          font-size: 15px;
+          border-radius: 5px;
+          border: 1px solid $color-border;
+          outline: none;
+
+          &:focus, :active {
+            border: 1px solid $color-hover;
+          }
+        }
+      }
+
+      &--login {
+        & > label {
+          font-size: 13px;
+        }
+      }
+    }
+
+    &__terms {
+      display: flex;
+      gap: 4px;
+      margin-bottom: 10px;
+
+      & > label {
+        display: flex;
+        gap: 8px;
+        color: $color-text-secondary;
+      }
+
+      & > p {
+        text-decoration: underline;
+      }
+    }
+  }
+
+  &__button {
+    width: 100%;
+    min-height: 50px;
+    font-size: 16px;
+    color: white;
+    background-color: #25CAA9;
+    display: inline-flex;
+    justify-content: center;
+    align-items: center;
+    border-radius: 5px;
+    padding: 7.5px 15px;
+    line-height: 1.38;
+    border: 1px solid transparent;
+    transition: 200ms ease-in-out;
+    margin-bottom: 10px;
+
+    &:hover {
+      cursor: pointer;
+    }
+  }
+
+  &__link {
+    text-decoration: underline;
+    width: min-content;
+    margin: 0 auto;
+    border: none;
+    outline: none;
+    background: white;
+    font-size: 14px;
+    margin-bottom: 20px;
+    transition: 200ms ease-in-out;
+
+    &:hover {
+      cursor: pointer;
+      color: $color-text-secondary;
+    }
+  }
+}
+
+#register_artist, #register_gallery, #register_artlover {
+  margin-right: 6px;
+}

@@ -1,0 +1,168 @@
+@import '../../styles/_utils/mixins';
+
+.artist_profile__container {
+    margin-left: auto;
+    margin-right: auto;
+    max-width: 1140px;
+
+    position: relative;
+
+    @media (min-width: 576px) {
+        max-width: 540px
+    }
+
+    @media (min-width: 768px) {
+        max-width: 720px
+    }
+
+    @media (min-width: 992px) {
+        max-width: 960px
+    }
+
+    @media (min-width: 1200px) {
+        max-width: 1140px
+    }
+}
+
+.background {
+    position: relative;
+
+    height: 340px;
+
+    &__image {
+        height: 100%;
+        width: 100%;
+
+        object-fit: cover;
+    }
+}
+
+.flex-container {
+    width: 100%;
+    display: flex;
+    justify-content: end;
+}
+
+.profileInfo-container {
+    padding-left: 15px;
+    padding-right: 15px;
+
+    @include on768 {
+        flex: 0 0 66.666667%;
+        max-width: 66.666667%;
+    }
+
+    @include on1024 {
+        flex: 0 0 75%;
+        max-width: 75%;
+    }
+}
+
+.avatar {
+    height: 185px;
+    width: 185px;
+
+    position: absolute;
+
+    top: 0;
+    left: 50%;
+
+    transform: translate(-50%, -50%);
+
+    @include on768 {
+        left: 0;
+        transform: translate(0, -50%);
+    }
+
+    &__image {
+        height: 100%;
+        width: 100%;
+
+        border-radius: 100%;
+        border: 4px solid white;
+    }
+}
+
+
+
+.profile-section {
+
+    &--nameSection {
+        display: flex;
+        flex-direction: row;
+        justify-content: center;
+
+        padding-top: 160px;
+        margin-bottom: 16px;
+
+        font-size: 22px;
+        font-weight: bold;
+
+        @include on768 {
+            font-size: 30px;
+
+            padding-top: 24px;
+            justify-content: start;
+        }
+    }
+
+    &--information {
+        margin-bottom: 20px;
+
+        & p {
+            line-height: 18px;
+            text-align: center;
+
+            @include on768 {
+                line-height: 22px;
+                font-size: 18px;
+
+                text-align: left;
+            }
+        }
+    }
+
+    &--about {
+        width: 100%;
+
+        font-size: 14px;
+        line-height: 18px;
+        word-wrap: break-word;
+
+        text-align: center;
+
+        @include on768 {
+            text-align: left;
+            line-height: 22px;
+            font-size: 18px;
+        }
+    }
+
+    &__space {
+        margin-top: 2em;
+        margin-bottom: 2em;
+    }
+
+    &__title {
+        font-size: 20px;
+        margin-bottom: 20px;
+
+        font-weight: 500;
+
+        text-align: center;
+    }
+}
+
+.pagination-container {
+    width: 100%;
+
+    display: flex;
+    flex-direction: row;
+    justify-content: center;
+
+    margin-bottom: 18px;
+
+    @include on768 {
+        justify-content: end;
+    }
+}

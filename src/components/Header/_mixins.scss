@@ -1,0 +1,121 @@
+@mixin flex-row {
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+}
+
+@mixin padding-horizontal {
+    padding-left: map-get($padding-map, mobile);
+    padding-right: map-get($padding-map, mobile);
+
+    @media (min-width: map-get($breakpoints, tablet)) {
+        padding-left: map-get($padding-map, tablet);
+        padding-right: map-get($padding-map, tablet);
+    }
+}
+
+@mixin header-height {
+    height: map-get($header-height-map, mobile);
+    max-height: map-get($header-height-map, mobile);
+
+    @media (min-width: map-get($breakpoints, tablet)) {
+        height: map-get($header-height-map, tablet);
+        max-height: map-get($header-height-map, tablet);
+    }
+}
+
+@mixin logo-width {
+    width: map-get($header-height-map, mobile) - 10px;
+
+    @media (min-width: map-get($breakpoints, tablet)) {
+        width: map-get($header-height-map, tablet) - 10px;
+    }
+}
+
+@mixin button-adaptive {
+    padding: 3px 20px;
+
+    @media (min-width: map-get($breakpoints, tablet)) {
+        font-size: 16px;
+        line-height: 22px;
+        padding: 6px 30px;
+        margin-left: 5px;
+        margin-right: 5px;
+    }
+}
+
+@mixin search-adaptive {
+    @media (min-width: map-get($breakpoints, laptop)) {
+        width: 280px;
+    }
+}
+
+@mixin list-reset {
+    list-style: none;
+    margin: 0;
+    padding: 0;
+}
+
+@mixin link-reset {
+    text-decoration: none;
+}
+
+@mixin mobile-only {
+    @media (min-width: map-get($breakpoints, tablet)) {
+        display: none;
+    }
+}
+
+@mixin not-mobile {
+    @media (max-width: map-get($breakpoints, tablet)) {
+        display: none;
+    }
+}
+
+@mixin logo-width {
+    width: map-get($header-height-map, mobile) + 10px;
+
+    @media (min-width: map-get($breakpoints, tablet)) {
+        width: map-get($header-height-map, tablet) + 10px;
+    }
+}
+
+@mixin button-adaptive {
+    padding: 3px 20px;
+
+    @media (min-width: map-get($breakpoints, tablet)) {
+        font-size: 16px;
+        line-height: 22px;
+        padding: 6px 30px;
+        margin-left: 5px;
+        margin-right: 5px;
+    }
+}
+
+@mixin search-adaptive {
+    @media (min-width: map-get($breakpoints, laptop)) {
+        width: 280px;
+    }
+}
+
+@mixin list-reset {
+    list-style: none;
+    margin: 0;
+    padding: 0;
+}
+
+@mixin link-reset {
+    text-decoration: none;
+}
+
+@mixin mobile-only {
+    @media (min-width: map-get($breakpoints, tablet)) {
+        display: none;
+    }
+}
+
+@mixin not-mobile {
+    @media (max-width: map-get($breakpoints, tablet)) {
+        display: none;
+    }
+}

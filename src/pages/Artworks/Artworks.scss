@@ -1,0 +1,24 @@
+@import '../../styles/_utils/variables';
+@import '../../styles/_utils/mixins';
+$grid-col-min-width: 0;
+$grid-col-max-width: 1fr;
+
+.my-masonry-grid {
+  display: flex;
+  margin-left: -16px;
+  /* Забезпечує відступи між колонками */
+  width: auto;
+
+  @include on1024 {
+    gap: 4px;
+  }
+  @include on1280 {
+    gap: 8px;
+  }
+}
+
+.my-masonry-grid_column {
+  padding-left: 16px;
+  /* Забезпечує відступи між елементами */
+  background-clip: padding-box;
+}
