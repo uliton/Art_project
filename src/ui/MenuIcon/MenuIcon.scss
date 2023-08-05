@@ -1,0 +1,17 @@
+@import '../../utils/variables';
+
+.menuIcon {
+  width: 50px;
+  height: 50px;
+
+  &:hover {
+    cursor: pointer;
+    .menuIcon__P {
+      fill: $color-hover;
+    }
+  }
+
+  &__P {
+    transition: all .5s;
+  }
+}

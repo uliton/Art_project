@@ -1,0 +1,16 @@
+@import '../../utils/variables';
+
+.paintingIcon {
+  width: 800px;
+  height: 800px;
+  fill: #000000;
+  stroke: #000000;
+  stroke-width: 0.00512;
+  transition: all .5s;
+
+  &:hover {
+    cursor: pointer;
+    fill: $color-hover;
+    stroke: $color-hover;
+  }
+}

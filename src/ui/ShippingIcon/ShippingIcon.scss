@@ -1,0 +1,23 @@
+@import '../../utils/variables';
+
+.shippingIcon {
+  width: 800px;
+  height: 800px;
+  fill: none;
+
+  &:hover {
+    cursor: pointer;
+    .shippingIcon__P {
+      stroke: $color-hover;
+    }
+  }
+
+  &__P {
+    stroke: #000000;
+    stroke-width: 0.8640000000000001;
+    stroke-linecap: round;
+    stroke-linejoin: round;
+
+    transition: all .5s;
+  }
+}

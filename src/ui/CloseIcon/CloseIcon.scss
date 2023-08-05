@@ -1,0 +1,26 @@
+@import '../../utils/variables';
+
+.closeIcon {
+  width: 100px;
+  height: 100px;
+  fill: red;
+  transition: all .5s;
+  background-color: inherit;
+
+  &:hover {
+    cursor: pointer;
+    transform: rotate(90deg);
+
+    .closeIcon__P {
+      stroke: $color-hover;
+    }
+  }
+
+  &__P {
+    stroke: black;
+    stroke-width: 2;
+    stroke-linecap: round;
+    stroke-linejoin: round;
+    transition: all .5s;
+  }
+}

@@ -1,1 +1,6 @@
-@import './styles/index.scss';
+@import './utils/reset';
+@import './utils/normolize';
+@import './utils/variables';
+@import './utils/mixins';
+@import './utils/container';
+@import './utils/fonts/fonts';
