@@ -1,15 +1,15 @@
 import React, { useEffect, useState } from 'react';
-import classNames from 'classnames';
+// import classNames from 'classnames';
 import DATA from '../../DATA.json';
 
 import './Tools.scss';
 import { FilterIcon } from '../../ui/FilterIcon/FilterIcon';
 import { Filters } from '../Filters';
-import { Link } from 'react-router-dom';
+// import { Link } from 'react-router-dom';
 
 export const Tools: React.FC = () => {
   const [allCategories, setAllCategories] = useState<string[]>(['All media']);
-  const [selectedCategory, setSelectedCategory] = useState<string>(allCategories[0]);
+  // const [selectedCategory, setSelectedCategory] = useState<string>(allCategories[0]);
   const [filtersIsOpen, setFiltersIsOpen] = useState<boolean>(false);
 
   useEffect(() => {
@@ -20,15 +20,16 @@ export const Tools: React.FC = () => {
       }
     });
     setAllCategories([...allCategories, ...categories]);
+  // eslint-disable-next-line react-hooks/exhaustive-deps
   }, []);
 
   const handlAddFilter = () => {
     setFiltersIsOpen(true);
   }
 
-  const handlChooseCategory = (category: string) => {
-    setSelectedCategory(category);
-  }
+  // const handlChooseCategory = (category: string) => {
+  //   setSelectedCategory(category);
+  // }
 
   return (
     <div className='tools container'>

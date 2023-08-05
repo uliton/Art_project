@@ -12,7 +12,7 @@ export const RegistrationModal:React.FC<Props> = ({ modalType, setModal }) => {
   const [name, setName] = useState<string>('');
   const [email, setEmail] = useState<string>('');
   const [password, setPassword] = useState<string>('');
-  const [register, setRegister] = useState<string>('');
+  const [register] = useState<string>('');
   const [termsIsChecked, setTermsIsChecked] = useState<boolean>(false);
 
   // scroll disable

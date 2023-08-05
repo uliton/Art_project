@@ -2,7 +2,7 @@ import React from 'react';
 import classNames from 'classnames';
 
 import './Filters.scss';
-import { Link } from 'react-router-dom';
+// import { Link } from 'react-router-dom';
 import { DefaultFilters } from './DefaultFilters';
 
 type Props = {

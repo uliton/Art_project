@@ -1,6 +1,6 @@
 import { Link } from "react-router-dom";
 import './MobileMenu.scss';
-import header from  '../Header.module.scss';
+// import header from  '../Header.module.scss';
 import Search from "./Search";
 
 type Props = {
