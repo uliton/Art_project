@@ -1,17 +1,16 @@
 {
   "files": {
-    "main.css": "./static/css/main.77751a84.css",
-    "main.js": "./static/js/main.b718ce76.js",
+    "main.css": "./static/css/main.0665f1a9.css",
+    "main.js": "./static/js/main.c027bfee.js",
     "static/media/AcuminPro-Italic.woff2": "./static/media/AcuminPro-Italic.4e5aaab0fb9bf2659b91.woff2",
     "static/media/AcuminPro-Regular.woff2": "./static/media/AcuminPro-Regular.3c9351c4aca43a383c64.woff2",
     "static/media/AcuminPro-Bold.woff2": "./static/media/AcuminPro-Bold.2ef073f08c521fc1615e.woff2",
-    "static/media/logo.svg": "./static/media/logo.9bbffd2d257b68c7dd984462eb8b8109.svg",
     "index.html": "./index.html",
-    "main.77751a84.css.map": "./static/css/main.77751a84.css.map",
-    "main.b718ce76.js.map": "./static/js/main.b718ce76.js.map"
+    "main.0665f1a9.css.map": "./static/css/main.0665f1a9.css.map",
+    "main.c027bfee.js.map": "./static/js/main.c027bfee.js.map"
   },
   "entrypoints": [
-    "static/css/main.77751a84.css",
-    "static/js/main.b718ce76.js"
+    "static/css/main.0665f1a9.css",
+    "static/js/main.c027bfee.js"
   ]
 }
