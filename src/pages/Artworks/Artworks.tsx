@@ -5,6 +5,7 @@ import { Artwork } from "../../components/Artwork";
 import { useParams } from "react-router-dom";
 import './Artworks.scss';
 import Masonry from 'react-masonry-css';
+import { Tools } from "../../components/Tools";
 
 export const Artworks: React.FC = () => {
   const { filter } = useParams();
@@ -18,6 +19,8 @@ export const Artworks: React.FC = () => {
 
   return (
     <div className="artworks container">
+      {/* <Tools /> */}
+
       <Masonry
         breakpointCols={breakpointColumnsObj}
         className="my-masonry-grid"

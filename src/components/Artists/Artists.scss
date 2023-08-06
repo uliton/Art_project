@@ -14,9 +14,9 @@
         grid-template-columns: repeat(3, minmax(0, 1fr));
     }
 
-    @include on1024 {
-        grid-template-columns: repeat(4, minmax(0, 1fr));
-    }
+    // @include on1024 {
+    //     grid-template-columns: repeat(4, minmax(0, 1fr));
+    // }
 
     @include on1280 {
         grid-template-columns: repeat(5, minmax(0, 1fr));
@@ -30,10 +30,6 @@
 .artist {
     display: flex;
     flex-direction: column;
-
-    &__linkImg {
-        
-    }
 
     &__img {
             width: 100%;

@@ -9,9 +9,9 @@ $grid-col-max-width: 1fr;
   /* Забезпечує відступи між колонками */
   width: auto;
 
-  @include on1024 {
-    gap: 4px;
-  }
+  // @include on1024 {
+  //   gap: 4px;
+  // }
   @include on1280 {
     gap: 8px;
   }

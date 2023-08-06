@@ -56,7 +56,7 @@ export const MobileMenu:React.FC<Props> = ({ isMenuOpen, handleCloseMenu }) => {
               <CloseIcon />
             </button>
 
-            <Search />
+            <Search handleCloseMenu={handleCloseMenu} />
 
             <nav className="mobileMenu__nav">
               <ul

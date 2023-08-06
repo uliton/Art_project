@@ -1,13 +1,25 @@
-import React from 'react';
+import React, { useState } from 'react';
 import './Search.scss';
 import { SearchIcon } from '../SearchIcon';
 
-export const Search: React.FC = () => {
-  const test = () => {
-    alert('cucu');
+type Props = {
+  handleCloseMenu?: () => void;
+}
+
+export const Search: React.FC<Props> = ({ handleCloseMenu }) => {
+  const [searchQuery, setSearchQuery] = useState<string>('')
+
+  const submitForm = (event: React.FormEvent) => {
+    event.preventDefault();
+
+    if (handleCloseMenu) {
+      handleCloseMenu();
+    }
+
+    setSearchQuery('');
   }
   return (
-    <form action="" onSubmit={test} className="search">
+    <form action="" onSubmit={submitForm} className="search">
       <button
         className="search__button"
         type="submit"
@@ -18,6 +30,11 @@ export const Search: React.FC = () => {
       <input
         className="search__input"
         type="text"
+        value={searchQuery}
+        onChange={(e) => {
+          setSearchQuery(e.target.value);
+        }
+        }
         placeholder="Search..."
       />
     </form>

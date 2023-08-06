@@ -1,6 +1,6 @@
 const PageNotFound = () => {
     return (
-        <div>
+        <div className="container">
             Page: PageNotFound currently in work
         </div>
     );

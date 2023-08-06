@@ -7,13 +7,23 @@ import { Logo } from "../../ui/Logo";
 import { Search } from "../../ui/Search";
 import { MenuIcon } from "../../ui/MenuIcon";
 import './Header.scss';
+import classNames from "classnames";
 
 enum Modal {
   login = 'login',
   register = 'register',
 }
 
-export const Header: React.FC = () => {
+enum Url {
+  artworks = 'artworks',
+  artists = 'artists',
+}
+
+type Props = {
+  url?: string
+}
+
+export const Header: React.FC<Props> = ({ url }) => {
   const [modal, setModal] = useState<string>('');
   const [isMenuOpen, setMenuOpen] = useState<boolean>(false);
 
@@ -38,7 +48,7 @@ export const Header: React.FC = () => {
       <div className="header container">
         <div className="header__left">
           <Link
-            to="./"
+            to="/ "
             className="header__logo"
           >
             <Logo />
@@ -49,7 +59,9 @@ export const Header: React.FC = () => {
               <li className="header__nav__item">
                 <Link
                   to="/artworks"
-                  className="header__nav__link"
+                  className={classNames('header__nav__link', {
+                    'header__nav__link--select': Url.artworks === url,
+                  })}
                 >
                   Artworks
                 </Link>
@@ -57,7 +69,9 @@ export const Header: React.FC = () => {
               <li className="header__nav__item">
                 <Link
                   to="/artists"
-                  className="header__nav__link"
+                  className={classNames('header__nav__link', {
+                    'header__nav__link--select': Url.artists === url,
+                  })}
                 >
                   Artists
                 </Link>

@@ -10,7 +10,7 @@
   @include on768 {
     height: 50px;
   }
-  @include on1024 {}
+  
   @include on1280 {}
 
   &__button {
