@@ -1,14 +1,11 @@
-import IndividualArtist from "../components/IndividualArtist";
+import IndividualArtist from "./IndividualArtist";
 import { useParams } from "react-router-dom";
-import PageNotFound from "./PageNotFound";
+import { PageNotFound } from "./PageNotFound";
 
 const IndividualArtistPage = () => {
-    const { artistId } = useParams();
+  const { artistId } = useParams();
 
-    return (
-        artistId ? <IndividualArtist id={artistId} />
-            : <PageNotFound />
-    );
+  return artistId ? <IndividualArtist id={artistId} /> : <PageNotFound />;
 };
 
 export default IndividualArtistPage;

@@ -1,0 +1,20 @@
+@import '../../utils/variables';
+@import '../../utils/mixins';
+
+.notFound {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  height: 20vh;
+  color: $color-hover;
+  font-size: 24px;
+  font-weight: bold;
+  text-transform: uppercase;
+
+  @include on768 {
+    font-size: 32px;
+  }
+  @include on1280 {
+    font-size: 44px;
+  }
+}
