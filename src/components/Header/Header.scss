@@ -1,0 +1,162 @@
+@import '../../utils/variables';
+@import '../../utils/mixins';
+
+.header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  gap: 24px;
+  padding: 8px;
+
+  &__left {
+    display: flex;
+    align-items: center;
+    gap: 24px;
+
+    @include on1280 {
+      gap: 40px;
+    }
+  }
+  &__middle {
+    display: none;
+  
+    @include on768 {
+      display: flex;
+      width: 100%;
+      max-width: 400px;
+    }
+  }
+  &__right {
+    display: flex;
+    justify-content: start;
+    align-items: center;
+    gap: 12px;
+
+    @include on1280 {
+      gap: 24px;
+    }
+  }
+
+  &__logo {
+    display: flex;
+    height: 28px;
+    margin-right: 12px;
+
+    @include on768 {
+      height: 36px;
+      margin-right: 16px;
+    }
+
+    @include on1280 {
+      height: 52px;
+    }
+  }
+
+  &__nav {
+    display: none;
+    width: max-content;
+    height: 100%;
+
+    @include on768 {
+      display: flex;
+    }
+    
+    &__list {
+      height: 100%;
+      list-style: none;
+      display: flex;
+      font-size: 18px;
+
+      @include on1280 {
+        font-size: 24px;
+      }
+    }
+
+    &__item {
+      align-items: center;
+      height: 100%;
+      margin-right: 24px;
+
+      @include on1280 {
+        margin-right: 40px;
+      }
+    }
+
+    &__link {
+      text-decoration: none;
+      color: #000;
+      font-weight: bold;
+      transition: all .5s;
+
+      &:hover {
+        color: $color-hover;
+      }
+    }
+  }
+
+  &__register {
+    display: none;
+    padding: 4px 12px;
+    background-color: black;
+    color: white;
+    font-size: 18px;
+    font-weight: 700;
+    border: 2px solid black;
+    border-radius: 5px;
+    outline: none;
+    transition: all .5s;
+
+    @include on768 {
+      display: inline-block;
+    }
+
+    @include on1280 {
+      font-size: 24px;
+      padding: 4px 24px;
+    }
+    
+    &:hover {
+      cursor: pointer;
+      color: $color-hover;
+      background-color: #fff;
+    }
+  }
+
+  &__login {
+    display: none;
+    background-color: white;
+    font-size: 18px;
+    font-weight: bold;
+    height: 100%;
+    padding: 4px 12px;
+    border: none;
+    outline: none;
+    transition: all .5s;
+    
+    @include on768 {
+      display: inline-block;
+    }
+
+    @include on1280 {
+      font-size: 24px;
+      padding: 4px 24px;
+    }
+
+    &:hover {
+      cursor: pointer;
+      color: $color-hover;
+    }
+  }
+
+  &__menu {
+    height: 28px;
+    width: 28px;
+    background-color: transparent;
+    border: none;
+    outline: none;
+
+    @include on768 {
+      display: none;
+    }
+  }
+}

@@ -1,14 +1,12 @@
 import { useState } from "react";
 import { Link } from "react-router-dom";
-// import { Modal } from "../Modal";
-import MobileMenu from "./innerComponents/MobileMenu";
-import Search from "./innerComponents/Search";
-import logo from './logo.svg';
-import header from './Header.module.scss';
-import { LoginModal } from "../LoginModal";
+import { MobileMenu } from "../MobileMenu";
 import { RegistrationModal } from "../RegistrationModal";
-
-// import BoundLogo from './BoundLogo.svg';
+import { LoginModal } from "../LoginModal";
+import { Logo } from "../../ui/Logo";
+import { Search } from "../../ui/Search";
+import { MenuIcon } from "../../ui/MenuIcon";
+import './Header.scss';
 
 enum Modal {
   login = 'login',
@@ -17,7 +15,7 @@ enum Modal {
 
 export const Header: React.FC = () => {
   const [modal, setModal] = useState<string>('');
-  const [isMenuOpen, setMenuOpen] = useState(false);
+  const [isMenuOpen, setMenuOpen] = useState<boolean>(false);
 
   const handlerLogin = () => {
     setModal(Modal.login);
@@ -37,113 +35,79 @@ export const Header: React.FC = () => {
 
   return (
     <>
-        <header className={`${header.header} container`}>
-            <div className={`${header.header_inHeader}`}>
-                <div className={`${header.logo}`}>
-                    <Link
-                        to={'/'}
-                        className={`${header.logo__link}`}
-                    >
-                        <img
-                            className={`${header.logo__link__image}`}
-                            src={logo}
-                            alt="logo"
-                        />
-                    </Link>
-                </div>
+      <div className="header container">
+        <div className="header__left">
+          <Link
+            to="./"
+            className="header__logo"
+          >
+            <Logo />
+          </Link>
 
-                <nav className={`${header.nav_container}`}>
-                    <ul className={`${header.nav_container__list}`}>
-                        <li className={`${header.desktop}`}>
-                            <Link
-                                to="/artworks"
-                                className={`${header.link}`}
-                            >Artworks</Link>
-                        </li>
-                        <li className={`${header.desktop}`}>
-                            <Link
-                                to="/artists"
-                                className={`${header.link}`}
-                            >Artists</Link>
-                        </li>
-                        {/* <li className={`${header.desktop}`}>
-                            <Link
-                                to="/auctions"
-                                className={`${header.link}`}
-                            >Auctions</Link>
-                        </li>
-                        <li className={`${header.desktop}`}>
-                            <Link
-                                to="/news"
-                                className={`${header.link}`}
-                            >News</Link>
-                        </li> */}
-                        <li className={`${header.search_container}`}>
-                            <Search />
-                        </li>
-                    </ul>
-                </nav>
-                <div className={`${header.menu_container}`}>
-                    <nav className={`${header.nav_container}`}>
-                        <ul className={`${header.nav_container__list}`}>
-                            {/* <li>
-                                <a
-                                    href="/pricing"
-                                    className={`${header.link}`}
-                                >Pricing</a>
-                            </li>
-                            <li>
-                                <a
-                                    href="/sell"
-                                    className={`${header.link}`}
-                                >Sell</a>
-                            </li> */}
-                            <li>
-                                <button
-                                    type="button"
-                                    className={`${header.button}`}
-                                    onClick={handlerRegister}
-                                >
-                                    Register
-                                </button>
-                            </li>
-                            <li>
-                                <button
-                                    type="button"
-                                    className={`${header.link}`}
-                                    onClick={handlerLogin}
-                                >
-                                    Login
-                                </button>
-                            </li>
-                            <li className={`${header.searchButton_container}`}>
-                                <a
-                                    href="/"
-                                    className={`${header.searchButton}`}
-                                >
-                                    <img src="/searchIcon.svg" alt="search" />
-                                </a>
-                            </li>
-                        </ul>
-                    </nav>
-                    <button
-                        className={`${header.menuButton} ${isMenuOpen ? 'open' : ''}`}
-                        onClick={handleOpenMenu}
-                    >
-                        <img src="/menuIcon.svg" alt="menu" />
-                    </button>
-                </div>
-            </div>
-            <MobileMenu isMenuOpen={isMenuOpen} handleCloseMenu={handleCloseMenu}/>
-        </header>
+          <nav className="header__nav">
+            <ul className="header__nav__list">
+              <li className="header__nav__item">
+                <Link
+                  to="/artworks"
+                  className="header__nav__link"
+                >
+                  Artworks
+                </Link>
+              </li>
+              <li className="header__nav__item">
+                <Link
+                  to="/artists"
+                  className="header__nav__link"
+                >
+                  Artists
+                </Link>
+              </li>
+            </ul>
+          </nav>
+        </div>
 
-        {modal === Modal.register && (
-            <RegistrationModal modalType={modal} setModal={setModal} />
-        )}
+        <div className="header__middle">
+          <Search />
+        </div>
 
-        {modal === Modal.login && (
-            <LoginModal modalType={modal} setModal={setModal} />
-        )}
+        <div className="header__right">
+          <button
+              type="button"
+              className="header__register"
+              onClick={handlerRegister}
+          >
+              Register
+          </button>
+
+          <button
+              type="button"
+              className="header__login"
+              onClick={handlerLogin}
+          >
+              Login
+          </button>
+
+          <button
+            className="header__menu"
+            onClick={handleOpenMenu}
+          >
+            <MenuIcon />
+          </button>
+        </div>
+
+        <MobileMenu
+          isMenuOpen={isMenuOpen}
+          handleCloseMenu={handleCloseMenu}
+        />
+      </div>
+
+      {modal === Modal.register && (
+        <RegistrationModal modalType={modal} setModal={setModal} />
+      )}
+
+      {modal === Modal.login && (
+        <LoginModal modalType={modal} setModal={setModal} />
+      )}
     </>
     );
 };

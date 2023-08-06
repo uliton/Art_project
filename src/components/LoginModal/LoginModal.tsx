@@ -1,7 +1,9 @@
 import React, { useState } from 'react';
-import logo from '../Header/logo.svg';
+// import logo from '../Header/logo.svg';
 
 import './LoginModal.scss';
+import { Link } from 'react-router-dom';
+import { Logo } from '../../ui/Logo';
 
 type Props = {
   modalType: string,
@@ -45,7 +47,9 @@ export const LoginModal:React.FC<Props> = ({ modalType, setModal }) => {
 
       <div className="modal__container">
         <div className="modal__header">
-          <img src={logo} alt="logo" className='modal__header__img' />
+          <Link to="./" className='modal__header__img'>
+            <Logo />
+          </Link>
 
           <div
             className='modal__exit'
