@@ -1,16 +1,16 @@
 {
   "files": {
     "main.css": "./static/css/main.4ddb7506.css",
-    "main.js": "./static/js/main.544f74dd.js",
+    "main.js": "./static/js/main.395a646c.js",
     "static/media/AcuminPro-Italic.woff2": "./static/media/AcuminPro-Italic.4e5aaab0fb9bf2659b91.woff2",
     "static/media/AcuminPro-Regular.woff2": "./static/media/AcuminPro-Regular.3c9351c4aca43a383c64.woff2",
     "static/media/AcuminPro-Bold.woff2": "./static/media/AcuminPro-Bold.2ef073f08c521fc1615e.woff2",
     "index.html": "./index.html",
     "main.4ddb7506.css.map": "./static/css/main.4ddb7506.css.map",
-    "main.544f74dd.js.map": "./static/js/main.544f74dd.js.map"
+    "main.395a646c.js.map": "./static/js/main.395a646c.js.map"
   },
   "entrypoints": [
     "static/css/main.4ddb7506.css",
-    "static/js/main.544f74dd.js"
+    "static/js/main.395a646c.js"
   ]
 }
