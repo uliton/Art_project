@@ -21,9 +21,9 @@ export const App = () => {
         <Routes>
           <Route path="/" element={<MainLayout />}>
             <Route index element={<Artworks index={true} />} />
-            <Route path="artworks" element={<Artworks />} />
+            <Route path="artworks/" element={<Artworks />} />
             <Route path="artworks/:id" element={<IndividualArtwork />} />
-            <Route path='artists' element={<Artists />} />
+            <Route path='artists/' element={<Artists />} />
 
             <Route path="*" element={<PageNotFound />} />
           </Route>
