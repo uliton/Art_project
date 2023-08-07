@@ -4,6 +4,7 @@ import classNames from "classnames";
 import TextComponent from "../../components/TextComponent";
 import ProductList from "../../components/ProductList";
 import Paginate from "../../components/Paginate";
+import { useParams } from "react-router-dom";
 
 const artworkName = "Artwork Name X";
 const authorName = "Thomas";
@@ -54,6 +55,10 @@ for (let i = 0; i < 5; i++) {
 }
 
 const IndividualArtwork = () => {
+  // id for api requests
+  const id = useParams();
+  console.log(id);
+
   const [isLike, setLike] = useState(false);
 
   const [page, setPage] = useState(1);

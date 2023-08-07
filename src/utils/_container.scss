@@ -1,5 +1,14 @@
+@import './mixins';
+
 .container {
-  margin: 0 auto;
+  margin: 0 auto 8px;
   max-width: 1440px;
   padding: 0 10px;
+
+  @include on768 {
+    margin: 0 auto 14px;
+  }
+  @include on1280 {
+    margin: 0 auto 20px;
+  }
 }

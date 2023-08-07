@@ -7,7 +7,11 @@ import './Artworks.scss';
 import Masonry from 'react-masonry-css';
 import { Tools } from "../../components/Tools";
 
-export const Artworks: React.FC = () => {
+type Props = {
+  index?: boolean,
+}
+
+export const Artworks: React.FC<Props> = ({ index }) => {
   const { filter } = useParams();
 
   const breakpointColumnsObj = {
@@ -28,7 +32,10 @@ export const Artworks: React.FC = () => {
       >
         {DATA.map((dataArt) => (
           <React.Fragment key={dataArt.id}>
-            <Artwork dataArt={dataArt} />
+            <Artwork
+              dataArt={dataArt}
+              index={index}
+            />
           </React.Fragment>
         ))}
       </Masonry>
