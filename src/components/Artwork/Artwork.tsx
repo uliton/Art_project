@@ -5,7 +5,7 @@ import './Artwork.scss';
 import { Link } from 'react-router-dom';
 
 type Props = {
-  dataArt: Data,
+  dataArt: ArtWork,
   index?: boolean,
 }
 
@@ -14,7 +14,7 @@ export const Artwork: React.FC<Props> = ({ dataArt, index }) => {
     <div className='artwork'>
       <Link to={index ? `artworks/${dataArt.id}/` : `${dataArt.id}/`} className='artwork__img'>
         <img
-          src={dataArt.image}
+          src={dataArt.image_url}
           // src={dataArt.image.placeholder}
           // data-src={dataArt.image.origin}
           alt="Опис зображення"

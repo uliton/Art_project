@@ -12,3 +12,11 @@ interface Data {
   colors: string,
   orientation: string,
 }
+
+interface ArtWork {
+  id: number,
+  title: string,
+  artist: number,
+  image_url: string,
+  description: string,
+}

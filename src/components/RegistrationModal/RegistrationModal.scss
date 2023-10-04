@@ -152,19 +152,26 @@
       }
     }
 
+    &__errorText {
+      display: block;
+      margin-top: -16px;
+      color: red;
+    }
+
     &__terms {
       display: flex;
       gap: 4px;
       margin-bottom: 10px;
-
+      
       & > label {
         display: flex;
         gap: 8px;
         color: $color-text-secondary;
       }
-
+      
       & > p {
         text-decoration: underline;
+        // color: red;
       }
     }
   }

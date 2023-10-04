@@ -10,12 +10,27 @@ type Props = {
   setModal: (_: string) => void
 }
 
+enum ErrorText {
+  nameIsTooSmall = '',
+  emailIsNotCorrect = '',
+  password = 'Your password ',
+  terms = 'The terms and conditions should be accepted',
+}
+
 export const RegistrationModal:React.FC<Props> = ({ modalType, setModal }) => {
   const [name, setName] = useState<string>('');
+  const [nameErrorMessage, setNameErrorMessage] = useState<string>('');
+
   const [email, setEmail] = useState<string>('');
+  const [emailErrorMessage, setEmailErrorMessage] = useState<string>('');
+
   const [password, setPassword] = useState<string>('');
+  const [passwordErrorMessage, setPasswordErrorMessage] = useState<string>('');
+
   const [register] = useState<string>('');
+
   const [termsIsChecked, setTermsIsChecked] = useState<boolean>(false);
+  const [termsErrorMessage, setTermsErrorMessage] = useState<string>('');
 
   // scroll disable
   if (modalType.length > 0) {
@@ -33,6 +48,11 @@ export const RegistrationModal:React.FC<Props> = ({ modalType, setModal }) => {
   }
 
   const handlerRegister = () => {
+
+
+
+
+
     if (name && email && password && register && termsIsChecked) {
       // send request
       console.log(name, email, password, register, termsIsChecked)
@@ -42,6 +62,15 @@ export const RegistrationModal:React.FC<Props> = ({ modalType, setModal }) => {
         setModal('');
       }
     }
+  }
+
+
+  const handleSubmit = () => {
+    console.log('submit')
+  }
+
+  const reset = () => {
+    console.log('reset')
   }
 
   return (
@@ -119,68 +148,97 @@ export const RegistrationModal:React.FC<Props> = ({ modalType, setModal }) => {
             </div>
           </div> */}
 
-          <div className="modal__body__inputs">
-            <label htmlFor="inputs_name">
-              Full name
-              <input
-                type="text"
-                id="inputs_name"
-                value={name}
-                onChange={(e) => {
-                  setName(e.target.value)
-                }}
-              />
-            </label>
-
-            <label htmlFor="inputs_email">
-              Email address
-              <input
-                type="text"
-                id="inputs_email"
-                value={email}
-                onChange={(e) => {
-                  setEmail(e.target.value)
-                }}
-              />
-            </label>
-
-            <label htmlFor="inputs_password">
-              Password
-              <input
-                type="password"
-                id="inputs_password"
-                value={password}
-                onChange={(e) => {
-                  setPassword(e.target.value)
-                }}
-              />
-            </label>
-          </div>
-
-          <div className="modal__body__terms">
-            <label htmlFor="terms">
-              <input
-                type="checkbox"
-                id="terms"
-                checked={termsIsChecked}
-                onChange={() => {
-                  setTermsIsChecked(!termsIsChecked)
-                }}
-              />
-              I accept the
-            </label>
-            <p>
-              terms and conditions
-            </p>
-          </div>
-
-          <button
-            type='button'
-            className="modal__button"
-            onClick={handlerRegister}
+          <form
+            action=""
+            onSubmit={handleSubmit}
+            onReset={reset}
           >
-            Register
-          </button>
+            <div className="modal__body__inputs">
+              <label htmlFor="inputs_name">
+                Full name
+                <input
+                  type="text"
+                  id="inputs_name"
+                  value={name}
+                  onChange={(e) => {
+                    setName(e.target.value)
+                  }}
+                  onBlur={() => {
+                    setNameErrorMessage(ErrorText.nameIsTooSmall)
+                  }}
+                />
+              </label>
+              {nameErrorMessage && (
+                <p className="modal__body__errorText">
+                  {nameErrorMessage}
+                </p>
+              )}
+
+              <label htmlFor="inputs_email">
+                Email address
+                <input
+                  type="text"
+                  id="inputs_email"
+                  value={email}
+                  onChange={(e) => {
+                    setEmail(e.target.value)
+                  }}
+                />
+              </label>
+              {emailErrorMessage && (
+                <p className="modal__body__errorText">
+                  {emailErrorMessage}
+                </p>
+              )}
+
+              <label htmlFor="inputs_password">
+                Password
+                <input
+                  type="password"
+                  id="inputs_password"
+                  value={password}
+                  onChange={(e) => {
+                    setPassword(e.target.value)
+                  }}
+                />
+              </label>
+              {passwordErrorMessage && (
+                <p className="modal__body__errorText">
+                  {passwordErrorMessage}
+                </p>
+              )}
+            </div>
+
+            <div className="modal__body__terms">
+              <label htmlFor="terms">
+                <input
+                  type="checkbox"
+                  id="terms"
+                  checked={termsIsChecked}
+                  onChange={() => {
+                    setTermsIsChecked(!termsIsChecked)
+                  }}
+                />
+                I accept the
+              </label>
+              <p>
+                terms and conditions
+              </p>
+            </div>
+            {termsErrorMessage && (
+              <p className="modal__body__errorText">
+              {termsErrorMessage}
+            </p>
+            )}
+
+            <button
+              type='submit'
+              className="modal__button"
+              // onClick={handlerRegister}
+            >
+              Register
+            </button>
+          </form>
 
           <button
             type='button'
