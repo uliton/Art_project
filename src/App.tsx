@@ -9,6 +9,7 @@ import { PageNotFound } from "./pages/PageNotFound";
 // import IndividualArtistPage from './pages/IndividualArtistPage';
 // import ArtWorkPage from './pages/ArtworkPage';
 import IndividualArtwork from './pages/IndividualArtwork';
+import { User } from "./pages/User";
 
 
 
@@ -24,6 +25,7 @@ export const App = () => {
             <Route path="artworks/" element={<Artworks />} />
             <Route path="artworks/:id" element={<IndividualArtwork />} />
             <Route path='artists/' element={<Artists />} />
+            <Route path='cabinet/:id' element={<User />} />
 
             <Route path="*" element={<PageNotFound />} />
           </Route>

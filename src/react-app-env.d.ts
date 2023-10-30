@@ -1,5 +1,10 @@
 /// <reference types="react-scripts" />
 
+interface Modal {
+  login: string,
+  register: string,
+}
+
 interface Data {
   id: number,
   image: string,
@@ -19,4 +24,21 @@ interface ArtWork {
   artist: number,
   image_url: string,
   description: string,
+}
+
+interface User {
+  fullname: string,
+  email: string,
+  password: string,
+}
+
+interface Artist {
+  id: number,
+  fullname: string,
+  location: string,
+  bio: string,
+  phone: string,
+  image: string,
+  categories: string[],
+  artworks: ArtWork[],
 }

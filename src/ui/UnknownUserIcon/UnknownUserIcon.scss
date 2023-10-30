@@ -1,0 +1,62 @@
+@import '../../utils/variables';
+@import '../../utils/mixins';
+
+.unknownUserIcon {
+  display: flex;
+  width: 26px;
+  height: 26px;
+  
+  @include on768 {
+    width: 36px;
+    height: 36px;
+  }
+  
+  @include on1280 {
+    width: 44px;
+    height: 44px;
+  }
+  
+  &__G {
+    stroke: none;
+    stroke-width: 0;
+    stroke-dasharray: none;
+    stroke-linecap: butt;
+    stroke-linejoin: miter;
+    stroke-miterlimit: 10;
+    fill: none;
+    fill-rule: nonzero;
+    opacity: 1;
+  }
+  
+  &__P {
+    stroke: none;
+    stroke-width: 1;
+    stroke-dasharray: none;
+    stroke-linecap: butt;
+    stroke-linejoin: miter;
+    stroke-miterlimit: 10;
+    fill: rgb(0,0,0);
+    fill-rule: nonzero;
+    opacity: 1;
+  
+    transition: all .5s;
+  }
+  
+  &__info {
+    width: 256px;
+    height: 256px;
+
+    .unknownUserIcon__P {
+      fill: gray;
+    }
+    &:hover {
+      cursor: inherit;
+      .unknownUserIcon__P {
+        fill: grey;
+      }
+    }
+  }
+}
+
+
+

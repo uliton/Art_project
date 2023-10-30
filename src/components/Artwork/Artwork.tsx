@@ -3,18 +3,19 @@ import img from './user_icon.png';
 
 import './Artwork.scss';
 import { Link } from 'react-router-dom';
+import { UnknownUserIcon } from '../../ui/UnknownUserIcon';
 
 type Props = {
-  dataArt: ArtWork,
+  artwork: ArtWork,
   index?: boolean,
 }
 
-export const Artwork: React.FC<Props> = ({ dataArt, index }) => {
+export const Artwork: React.FC<Props> = ({ artwork, index }) => {
   return (
     <div className='artwork'>
-      <Link to={index ? `artworks/${dataArt.id}/` : `${dataArt.id}/`} className='artwork__img'>
+      <Link to={index ? `artworks/${artwork.id}/` : `${artwork.id}/`} className='artwork__img'>
         <img
-          src={dataArt.image_url}
+          src={artwork.image_url}
           // src={dataArt.image.placeholder}
           // data-src={dataArt.image.origin}
           alt="Опис зображення"
@@ -22,15 +23,14 @@ export const Artwork: React.FC<Props> = ({ dataArt, index }) => {
         />
       </Link>
 
-      <Link to='' className="artwork__artist">
-        <img
-          src={img}
-          alt="img"
-          className='artwork__artist__img'
-        />
+      <Link
+        to={`/cabinet/artist/${artwork.id}`}
+        className="artwork__artist"
+      >
+        <UnknownUserIcon />
 
         <p className="artwork__artist__text">
-          {dataArt.artist}
+          {artwork.title}
         </p>
       </Link>
     </div>

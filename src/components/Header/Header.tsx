@@ -1,4 +1,4 @@
-import { useState } from "react";
+import { useEffect, useState } from "react";
 import { Link } from "react-router-dom";
 import { MobileMenu } from "../MobileMenu";
 import { RegistrationModal } from "../RegistrationModal";
@@ -8,6 +8,9 @@ import { Search } from "../../ui/Search";
 import { MenuIcon } from "../../ui/MenuIcon";
 import './Header.scss';
 import classNames from "classnames";
+import { getUser, test } from "../../api/artworks";
+import { Entering } from "../Entering";
+import { UserIcon } from "../../ui/UserIcon";
 
 enum Modal {
   login = 'login',
@@ -24,16 +27,9 @@ type Props = {
 }
 
 export const Header: React.FC<Props> = ({ url }) => {
+  const [enterStatus, setEnterStatus] = useState<boolean>(true);
   const [modal, setModal] = useState<string>('');
   const [isMenuOpen, setMenuOpen] = useState<boolean>(false);
-
-  const handlerLogin = () => {
-    setModal(Modal.login);
-  }
-
-  const handlerRegister = () => {
-    setModal(Modal.register);
-  }
 
   const handleCloseMenu = () => {
     setMenuOpen(false);
@@ -42,6 +38,21 @@ export const Header: React.FC<Props> = ({ url }) => {
   const handleOpenMenu = () => {
     setMenuOpen(true);
   };
+
+  const [user, setUser] = useState(null);
+
+  useEffect(() => {
+    // getUser()
+    //   .then(res => {
+    //     setUser(res)
+    //   });
+
+    // test().then(res => {
+    //   setUser(res)
+    // })
+  }, []);
+  
+  // console.log(user)
 
   return (
     <>
@@ -84,26 +95,25 @@ export const Header: React.FC<Props> = ({ url }) => {
           <Search />
         </div>
 
-        <div className="header__right">
-          <button
-              type="button"
-              className="header__register"
-              onClick={handlerRegister}
-          >
-              Register
-          </button>
-
-          <button
-              type="button"
-              className="header__login"
-              onClick={handlerLogin}
-          >
-              Login
-          </button>
+        <div className={classNames({
+          "header__right": enterStatus
+        })}>
+          {enterStatus
+            ? (
+              <UserIcon />
+            )
+            : (
+              <Entering
+                modal={Modal}
+                setModal={setModal}
+              />
+            )
+          }
 
           <button
             className="header__menu"
             onClick={handleOpenMenu}
+            title="Menu"
           >
             <MenuIcon />
           </button>
@@ -112,6 +122,7 @@ export const Header: React.FC<Props> = ({ url }) => {
         <MobileMenu
           isMenuOpen={isMenuOpen}
           handleCloseMenu={handleCloseMenu}
+          enterStatus={enterStatus}
         />
       </div>
 

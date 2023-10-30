@@ -1,0 +1,29 @@
+@import '../../utils/variables';
+@import '../../utils/mixins';
+
+.userIcon {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  height: 100%;
+  color: #000;
+  text-decoration: none;
+  transition: all .5s;
+  
+  @include on768 {
+    gap: 12px;
+    font-size: 16px;
+  }
+
+  @include on1280 {
+    font-size: 18px;
+  }
+
+  &:hover {
+    cursor: pointer;
+    color: $color-hover-main;
+    .unknownUser__P {
+      fill: $color-hover-main;
+    }
+  }
+}

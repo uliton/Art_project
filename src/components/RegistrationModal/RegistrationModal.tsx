@@ -1,77 +1,177 @@
-import React, { useState } from 'react';
+import React, { useEffect, useRef, useState } from 'react';
 // import logo from '../Header/logo.svg';
 
 import './RegistrationModal.scss';
 import { Link } from 'react-router-dom';
 import { Logo } from '../../ui/Logo';
+import { addNewUser } from '../../api/artworks';
+import classNames from 'classnames';
+import { CrimsonButton } from '../../ui/CrimsonButton';
 
 type Props = {
   modalType: string,
   setModal: (_: string) => void
 }
 
-enum ErrorText {
-  nameIsTooSmall = '',
-  emailIsNotCorrect = '',
-  password = 'Your password ',
-  terms = 'The terms and conditions should be accepted',
+enum ERROR_TEXT {
+  nameIsRequired = 'Name is required',
+  nameIsTooSmall = 'Name is to small',
+  emailIsRequired = 'Email is required',
+  emailIsNotAvailable = 'Email is not available',
+  passwordIsRequired = 'Password is required',
+  passwordIsTooSmall = 'Password should be at least 8 characters',
+  termsIsRequired = 'The terms and conditions should be accepted',
 }
 
 export const RegistrationModal:React.FC<Props> = ({ modalType, setModal }) => {
+  // #region states
   const [name, setName] = useState<string>('');
   const [nameErrorMessage, setNameErrorMessage] = useState<string>('');
 
   const [email, setEmail] = useState<string>('');
   const [emailErrorMessage, setEmailErrorMessage] = useState<string>('');
+  const emailField = useRef<HTMLInputElement>(null);
 
   const [password, setPassword] = useState<string>('');
   const [passwordErrorMessage, setPasswordErrorMessage] = useState<string>('');
-
-  const [register] = useState<string>('');
+  const passwordField = useRef<HTMLInputElement>(null);
 
   const [termsIsChecked, setTermsIsChecked] = useState<boolean>(false);
   const [termsErrorMessage, setTermsErrorMessage] = useState<string>('');
-
-  // scroll disable
+  
+  const [serverErrorMessage, setServerErrorMessage] = useState<string>('');
+  // #endregion
+  // #region scroll disable
   if (modalType.length > 0) {
     document.body.style.overflow = 'hidden'
   }
+  // #endregion
+  // #region handlers
+  // changes
+  const handleNameChange = (event: React.ChangeEvent<HTMLInputElement>) => {
+    if (nameErrorMessage) {
+      setNameErrorMessage('');
+    }
+    setName(event.target.value);
+  }
 
+  const handleEmailChange = (event: React.ChangeEvent<HTMLInputElement>) => {
+    if (emailErrorMessage) {
+      setEmailErrorMessage('');
+    }
+    setEmail(event.target.value);
+  }
+
+  const handlePasswordChange = (event: React.ChangeEvent<HTMLInputElement>) => {
+    if (passwordErrorMessage) {
+      setPasswordErrorMessage('');
+    }
+    setPassword(event.target.value);
+  }
+
+  const handleTermsChange = () => {
+    if (termsErrorMessage) {
+      setTermsErrorMessage('');
+    }
+    setTermsIsChecked(!termsIsChecked);
+  }
+
+  // close
   const handlerClose = () => {
     // scroll enable
     document.body.style.overflow = 'auto'
     setModal('');
   }
 
+  // change modal
   const handlerLoginModal = () => {
     setModal('login');
   }
+  // #endregion
+  // #region checking
+  const checkingName = () => {
+    if (name.length === 0) {
+      setNameErrorMessage(ERROR_TEXT.nameIsRequired);
+      return false;
+    }
 
-  const handlerRegister = () => {
+    if (name.length > 0 && name.length < 2) {
+      setNameErrorMessage(ERROR_TEXT.nameIsTooSmall);
+      return false;
+    }
 
+    return true;
+  }
 
+  const checkingEmail = () => {
+    const regExp = new RegExp('^([A_Za-z0-9_-]+\.)*[A_Za-z0-9_-]+@[a-z0-9_-]+(\.[a-z0-9_-]+)*\.[a-z]{2,6}$');
+    if (email.length === 0) {
+      setEmailErrorMessage(ERROR_TEXT.emailIsRequired);
+      return false;
+    }
+    if (!email.match(regExp)) {
+      setEmailErrorMessage(ERROR_TEXT.emailIsNotAvailable);
+      return false;
+    }
 
+    return true;
+  }
 
+  const checkingPassword = () => {
+    if (password.length === 0) {
+      setPasswordErrorMessage(ERROR_TEXT.passwordIsRequired);
+      return false;
+    }
+    if (password.length < 8) {
+      setPasswordErrorMessage(ERROR_TEXT.passwordIsTooSmall);
+      return false;
+    }
 
-    if (name && email && password && register && termsIsChecked) {
+    return true;
+  }
+  // #endregion
+
+  const handleSubmit = async (event: React.FormEvent) => {
+    event.preventDefault();
+
+    if (!termsIsChecked) {
+      setTermsErrorMessage(ERROR_TEXT.termsIsRequired)
+    }
+
+    const nameCheck = checkingName();
+    const emailCheck = checkingEmail();
+    const passwordCheck = checkingPassword();
+    
+    if (nameCheck && emailCheck && passwordCheck && termsIsChecked) {
+      const registerData: User = {
+        fullname: name,
+        email: email,
+        password: password,
+      }
+
       // send request
-      console.log(name, email, password, register, termsIsChecked)
+      const addingUser = await addNewUser(registerData)
+        .then(res => res);
+
+        if (addingUser.status === 201) {
+          setModal('');
+      } else {
+        setServerErrorMessage(addingUser.response.data.email[0].slice(0, -1));
+      }
+  
 
       // checking user. need to be shure the user NOT allready registered
-      if (true) {
-        setModal('');
-      }
+      // if (true) {
+      //   setModal('');
+      // }
     }
+
+    // console.log('submit')
   }
 
-
-  const handleSubmit = () => {
-    console.log('submit')
-  }
-
-  const reset = () => {
-    console.log('reset')
-  }
+  // const reset = () => {
+  //   console.log('reset')
+  // }
 
   return (
     <div className='modal'>
@@ -82,7 +182,6 @@ export const RegistrationModal:React.FC<Props> = ({ modalType, setModal }) => {
           <Link to="./" className='modal__header__img'>
             <Logo />
           </Link>
-          {/* <img src={logo} alt="logo" className='modal__header__img' /> */}
 
           <div
             className='modal__exit'
@@ -96,63 +195,24 @@ export const RegistrationModal:React.FC<Props> = ({ modalType, setModal }) => {
           </div>
 
           <div className="modal__body__subtitle">
-            {/* Register as an Artist, Gallery or Artlover. */}
             Join our community and experience the unlimited possibilities of Bound Gallery!
           </div>
 
-          {/* <div className="modal__body__register">
-            Register as
-
-            <div className="modal__body__register__wrapper">
-              <label htmlFor="register_artist">
-                <input
-                  id="register_artist"
-                  type="radio"
-                  name="register"
-                  value="artist"
-                  checked={register === 'artist'}
-                  onChange={(e) => {
-                    setRegister(e.target.value);
-                  }}
-                />
-                Artist
-              </label>
-
-              <label htmlFor="register_gallery">
-                <input
-                  id="register_gallery"
-                  type="radio"
-                  name="register"
-                  value="gallery"
-                  checked={register === 'gallery'}
-                  onChange={(e) => {
-                    setRegister(e.target.value);
-                  }}
-                />
-                Gallery
-              </label>
-
-              <label htmlFor="register_artlover">
-                <input
-                  id="register_artlover"
-                  type="radio"
-                  name="register"
-                  value="artlover"
-                  checked={register === 'artlover'}
-                  onChange={(e) => {
-                    setRegister(e.target.value);
-                  }}
-                />
-                Artlover
-              </label>
-            </div>
-          </div> */}
-
+          {/* FORM */}
           <form
             action=""
             onSubmit={handleSubmit}
-            onReset={reset}
+            // onReset={reset}
           >
+            {serverErrorMessage && (
+              <p
+                className="modal__body__errorText"
+                style={{textAlign: 'center'}}
+              >
+              {serverErrorMessage}
+            </p>
+            )}
+
             <div className="modal__body__inputs">
               <label htmlFor="inputs_name">
                 Full name
@@ -160,12 +220,8 @@ export const RegistrationModal:React.FC<Props> = ({ modalType, setModal }) => {
                   type="text"
                   id="inputs_name"
                   value={name}
-                  onChange={(e) => {
-                    setName(e.target.value)
-                  }}
-                  onBlur={() => {
-                    setNameErrorMessage(ErrorText.nameIsTooSmall)
-                  }}
+                  onChange={handleNameChange}
+                  onBlur={checkingName}
                 />
               </label>
               {nameErrorMessage && (
@@ -179,10 +235,10 @@ export const RegistrationModal:React.FC<Props> = ({ modalType, setModal }) => {
                 <input
                   type="text"
                   id="inputs_email"
+                  ref={emailField}
                   value={email}
-                  onChange={(e) => {
-                    setEmail(e.target.value)
-                  }}
+                  onChange={handleEmailChange}
+                  onBlur={checkingEmail}
                 />
               </label>
               {emailErrorMessage && (
@@ -196,10 +252,10 @@ export const RegistrationModal:React.FC<Props> = ({ modalType, setModal }) => {
                 <input
                   type="password"
                   id="inputs_password"
+                  ref={passwordField}
                   value={password}
-                  onChange={(e) => {
-                    setPassword(e.target.value)
-                  }}
+                  onChange={handlePasswordChange}
+                  onBlur={checkingPassword}
                 />
               </label>
               {passwordErrorMessage && (
@@ -215,9 +271,7 @@ export const RegistrationModal:React.FC<Props> = ({ modalType, setModal }) => {
                   type="checkbox"
                   id="terms"
                   checked={termsIsChecked}
-                  onChange={() => {
-                    setTermsIsChecked(!termsIsChecked)
-                  }}
+                  onChange={handleTermsChange}
                 />
                 I accept the
               </label>
@@ -231,13 +285,11 @@ export const RegistrationModal:React.FC<Props> = ({ modalType, setModal }) => {
             </p>
             )}
 
-            <button
-              type='submit'
-              className="modal__button"
-              // onClick={handlerRegister}
-            >
-              Register
-            </button>
+            <CrimsonButton
+              isNotReady={(nameErrorMessage.length || emailErrorMessage.length || passwordErrorMessage.length || !termsIsChecked)}
+              text="Register"
+              buttonType="submit"
+            />
           </form>
 
           <button

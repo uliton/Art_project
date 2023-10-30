@@ -15,9 +15,10 @@ enum Modal {
 type Props = {
     isMenuOpen: boolean;
     handleCloseMenu: () => void;
+    enterStatus: boolean;
 };
 
-export const MobileMenu:React.FC<Props> = ({ isMenuOpen, handleCloseMenu }) => {
+export const MobileMenu:React.FC<Props> = ({ isMenuOpen, handleCloseMenu, enterStatus }) => {
   const [modal, setModal] = useState<string>('');
 
 
@@ -74,22 +75,26 @@ export const MobileMenu:React.FC<Props> = ({ isMenuOpen, handleCloseMenu }) => {
                   </Link>
                 </li>
 
-                <li
-                  className="mobileMenu__nav__item"
-                  onClick={handlerRegister}
-                >
-                  <p className="mobileMenu__nav__link">
-                    Register
-                  </p>
-                </li>
-                <li
-                  className="mobileMenu__nav__item"
-                  onClick={handlerLogin}
-                >
-                  <p className="mobileMenu__nav__link">
-                    Login
-                  </p>
-                </li>
+                {!enterStatus && (
+                  <li
+                    className="mobileMenu__nav__item"
+                    onClick={handlerRegister}
+                  >
+                    <p className="mobileMenu__nav__link">
+                      Register
+                    </p>
+                  </li>
+                )}
+                {!enterStatus && (
+                  <li
+                    className="mobileMenu__nav__item"
+                    onClick={handlerLogin}
+                  >
+                    <p className="mobileMenu__nav__link">
+                      Login
+                    </p>
+                  </li>
+                )}
               </ul>
             </nav>
           </div>

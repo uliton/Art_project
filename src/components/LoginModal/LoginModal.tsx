@@ -4,6 +4,8 @@ import React, { useState } from 'react';
 import './LoginModal.scss';
 import { Link } from 'react-router-dom';
 import { Logo } from '../../ui/Logo';
+import classNames from 'classnames';
+import { CrimsonButton } from '../../ui/CrimsonButton';
 
 type Props = {
   modalType: string,
@@ -88,13 +90,11 @@ export const LoginModal:React.FC<Props> = ({ modalType, setModal }) => {
             </label>
           </div>
 
-          <button
-            type='button'
-            className="modal__button"
-            onClick={handlerLogin}
-          >
-            Sign in
-          </button>
+          <CrimsonButton
+            isNotReady={!email.length || !password.length}
+            text="Sign in"
+            handler={handlerLogin}
+          />
 
           <button
             type='button'

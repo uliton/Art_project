@@ -38,7 +38,7 @@
 
     &:hover {
       &::before, &::after {
-        background-color: $color-hover;
+        background-color: $color-hover-main;
       }
     }
     &::before, &::after {

@@ -14,17 +14,17 @@ type Props = {
 }
 
 export const Artworks: React.FC<Props> = ({ index }) => {
-  const [t, setT] = useState<ArtWork[] | []>([])
+  const [allArtworks, setAllArtworks] = useState<ArtWork[] | []>([])
   const { filter } = useParams();
 
   useEffect(() => {
     getAllArtworks().then(res => {
-      setT(res.results);
+      setAllArtworks(res.results);
     });
     
   }, []);
   
-  console.log(t);
+  console.log(allArtworks);
 
   const breakpointColumnsObj = {
     default: 5,
@@ -42,10 +42,10 @@ export const Artworks: React.FC<Props> = ({ index }) => {
         className="my-masonry-grid"
         columnClassName="my-masonry-grid_column"
       >
-        {t.length > 0 && t.map((dataArt) => (
-          <React.Fragment key={dataArt.id}>
+        {allArtworks.length > 0 && allArtworks.map((artwork) => (
+          <React.Fragment key={artwork.id}>
             <Artwork
-              dataArt={dataArt}
+              artwork={artwork}
               index={index}
             />
           </React.Fragment>
