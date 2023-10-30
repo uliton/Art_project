@@ -13,7 +13,6 @@ export const UserIcon: React.FC = () => {
     })
   }, []);
 
-  console.log(user)
   const id = 1;
 
   return (

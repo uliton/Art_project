@@ -24,7 +24,7 @@ export const Artworks: React.FC<Props> = ({ index }) => {
     
   }, []);
   
-  console.log(allArtworks);
+  // console.log(allArtworks);
 
   const breakpointColumnsObj = {
     default: 5,

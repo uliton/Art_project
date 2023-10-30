@@ -21,9 +21,14 @@ interface Data {
 interface ArtWork {
   id: number,
   title: string,
-  artist: number,
+  artist: ArtistShort,
   image_url: string,
   description: string,
+  price: string,
+  color: string[],
+  categories: number,
+  year: number,
+  likes: number,
 }
 
 interface User {
@@ -41,4 +46,9 @@ interface Artist {
   image: string,
   categories: string[],
   artworks: ArtWork[],
+}
+
+interface ArtistShort {
+  id: number,
+  fullname: string,
 }

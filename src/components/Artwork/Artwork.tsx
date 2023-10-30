@@ -13,7 +13,7 @@ type Props = {
 export const Artwork: React.FC<Props> = ({ artwork, index }) => {
   return (
     <div className='artwork'>
-      <Link to={index ? `artworks/${artwork.id}/` : `${artwork.id}/`} className='artwork__img'>
+      <Link to={index ? `artworks/${artwork.id}` : `${artwork.id}`} className='artwork__img'>
         <img
           src={artwork.image_url}
           // src={dataArt.image.placeholder}
@@ -24,7 +24,7 @@ export const Artwork: React.FC<Props> = ({ artwork, index }) => {
       </Link>
 
       <Link
-        to={`/cabinet/artist/${artwork.id}`}
+        to={`/cabinet/artist/${artwork.artist.id}`}
         className="artwork__artist"
       >
         <UnknownUserIcon />
